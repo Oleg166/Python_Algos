@@ -9,12 +9,12 @@
 """
 
 LIST_1 = [28, -86, 44, -37, -7, -52, -19, -3, -15, -73]
-MIN_El_1 = min(LIST_1)
+MIN_1 = min(LIST_1)
 
-if LIST_1.count(MIN_El_1) == 1:
-    print(f"Наименьший элемент: {MIN_El_1}, встречается в этом массиве {LIST_1.count(MIN_El_1)} раз")
-    del LIST_1[LIST_1.index(MIN_El_1)]
-    MIN_El_2 = min(LIST_1)
-    print(f"Второй наименьший элемент: {MIN_El_2}")
+if LIST_1.count(MIN_1) == 1:
+    print(f"Наименьший элемент: {MIN_1}, встречается в этом массиве {LIST_1.count(MIN_1)} раз")
+    del LIST_1[LIST_1.index(MIN_1)]
+    MIN_2 = min(LIST_1)
+    print(f"Второй наименьший элемент: {MIN_2}")
 else:
-    print(f"Наименьший элемент: {MIN_El_1}, встречается в этом массиве {LIST_1.count(MIN_El_1)} раза")
+    print(f"Наименьший элемент: {MIN_1}, встречается в этом массиве {LIST_1.count(MIN_1)} раза")

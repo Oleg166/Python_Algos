@@ -36,3 +36,19 @@
 [3, 3, 3, 3, 12]
 [3, 3, 3, 3, 12]
 """
+MATRIX = []
+
+for i in range(1, 6):
+    print(f"Введите данные {i}-ой строки матрицы: ")
+    LINE = []
+    _SUM = 0
+    for j in range(1, 5):
+        el = int(input(f"Введите {j}-ый элемент строки: "))
+        LINE.append(el)
+        _SUM = _SUM + el
+    LINE.append(_SUM)
+    MATRIX.append(LINE)
+
+
+for i in MATRIX:
+    print(i)

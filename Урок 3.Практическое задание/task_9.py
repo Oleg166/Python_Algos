@@ -11,3 +11,17 @@
 [13, 12, 7, 15] минимальные значения по столбцам
 Максимальное среди них = 15
 """
+MATRIX = [[36, 20, 42, 38], [43, 27, 7, 33], [13, 12, 47, 15]]
+
+LINE_COUNT = 3
+COLUMN_COUNT = 4
+
+LIST_MIN = []
+for i in range(0, COLUMN_COUNT):
+    COLUMN = []
+    for n in range(0, LINE_COUNT):
+        COLUMN.append(MATRIX[n][i])
+    LIST_MIN.append(min(COLUMN))
+
+print(f"{LIST_MIN} минимальные значения по столбцам")
+print(f"Максимальное среди них = {max(LIST_MIN)}")
