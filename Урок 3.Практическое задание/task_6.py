@@ -13,3 +13,24 @@
 Массив: [88, 58, 50, 77, 49, 6, 42, 67, 14, 79]
 Сумма элементов между минимальным (6)  и максимальным (88) элементами: 234
 """
+
+LIST_1 = [88, 58, 50, 77, 49, 6, 42, 67, 14, 79]
+
+MIN_INDEX = LIST_1.index(min(LIST_1))
+MAX_INDEX = LIST_1.index(max(LIST_1))
+
+if MAX_INDEX < MIN_INDEX:
+    START_INDEX = MAX_INDEX+1
+    END_INDEX = MIN_INDEX
+else:
+    START_INDEX = MIN_INDEX+1
+    END_INDEX = MAX_INDEX
+
+LIST_2 = LIST_1[START_INDEX:END_INDEX]
+
+_SUM = 0
+for i in LIST_2:
+    _SUM = _SUM + i
+
+print(f"Сумма элементов между минимальным ({min(LIST_1)}) и "
+      f"максимальным ({max(LIST_1)}) элементами: {_SUM}")
