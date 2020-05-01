@@ -12,20 +12,3 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
-NUMB = int(input("Введите натуральное число: "))
-
-EVEN = 0
-ODD = 0
-M = 0
-INSIDE = NUMB
-while M != 1:
-    EL = INSIDE % 10
-    if EL % 2 == 0:
-        EVEN += 1
-    else:
-        ODD += 1
-    INSIDE = INSIDE // 10
-    if INSIDE == 0:
-        break
-
-print(f"В числе {NUMB} всего {EVEN+ODD} цифр, из которых {EVEN} четных и {ODD} нечетных")

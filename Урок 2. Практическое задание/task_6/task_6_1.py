@@ -7,25 +7,3 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
-
-import random
-
-print("Игра отгадай число от 0 до 100")
-B = random.randint(0, 100)
-C = 1
-A = None
-while C != 11:
-    print(f"Попытка номер {C}")
-    A = int(input("Введите число: "))
-    C += 1
-    if A == B:
-        print("Вы выиграли")
-        break
-    elif B < A:
-        print("Загаданное число меньше\n")
-        continue
-    elif B > A:
-        print("Загаданное число больше\n")
-
-if C == 11 and A != B:
-    print(f"Вы проиграли. Загаданное число {B}")

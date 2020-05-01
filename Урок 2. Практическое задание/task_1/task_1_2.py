@@ -33,35 +33,3 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
-
-
-def kalk():
-    """
-    Рекурсивная функция калькулятор
-    """
-    operation = input("Введите операцию (+, -, *, / или 0 для выхода: ")
-    if operation == "0":
-        return
-    if operation in ('+', '-', '*', '/'):
-        try:
-            numb_1 = int(input("Введите первое число: "))
-            numb_2 = int(input("Введите второе число: "))
-            if operation == "+":
-                print(f"Результат {numb_1 + numb_2}")
-            elif operation == "-":
-                print(f"Результат {numb_1 - numb_2}")
-            elif operation == "*":
-                print(f"Результат {numb_1 * numb_2}")
-            elif operation == "/":
-                while numb_2 == 0:
-                    print(f"На ноль делить нельзя!!! Введите второе число ещё раз")
-                    numb_2 = int(input("Введите второе число: "))
-                print(f"Результат: {numb_1 / numb_2}")
-        except ValueError:
-            print("Вместо числа Вы ввели строку. Попробуйте ещё раз")
-    else:
-        print("Неверная операция, повторите ввод")
-    kalk()
-
-
-kalk()

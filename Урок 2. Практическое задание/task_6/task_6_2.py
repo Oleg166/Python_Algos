@@ -7,31 +7,3 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
-
-import random
-
-print("Игра отгадай число от 0 до 100")
-B = random.randint(0, 100)
-
-
-def guess(count):
-    """
-    Функция для игры в игру угадай число от 0 до 100
-    """
-    print(f"Попытка номер {count}")
-    numb_user = int(input("Введите число от 0 до 100: "))
-
-    if numb_user == B:
-        return print("Вы выиграли")
-    if count == 10:
-        return print(f"Вы проиграли. Загаданное число {B}.")
-    if B < numb_user:
-        print("Загаданное число меньше\n")
-        count += 1
-    elif B > numb_user:
-        print("Загаданное число больше\n")
-        count += 1
-    guess(count)
-
-
-guess(1)
