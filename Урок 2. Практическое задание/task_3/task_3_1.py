@@ -20,4 +20,4 @@ for n in range(len(str(NUMB))-1, -1, -1):
     NUMB = NUMB // 10
     NUMB_2 = NUMB_2 + NUMB_1*(10**n)
 
-print(NUMB_2)
+print(f"Перевернутое число: {NUMB_2}")

@@ -14,3 +14,20 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+
+def turn_over(i, step, num_2=0):
+    """
+    Функция переворачивает число
+    """
+    if step == 0:
+        return print(f"Перевернутое число: {num_2}")
+    i_1 = i % 10
+    i = i // 10
+    num_2 = num_2 + i_1*(10**(step-1))
+    step -= 1
+    turn_over(i, step, num_2)
+
+
+NUMB_1 = int(input("Введите число, которое требуется перевернуть: "))
+turn_over(NUMB_1, len(str(NUMB_1)))

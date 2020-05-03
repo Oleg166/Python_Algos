@@ -5,3 +5,18 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+
+def proof(num, sum_1=0):
+    if num == 0:
+        return print(f'Сумма    "1+2+...+n" для числа {Q} равна {sum_1}.')
+    sum_1 = sum_1 + num
+    num -= 1
+    proof(num, sum_1)
+
+
+Q = int(input("Введите число, для которого Вы хотите проверить равенство: "))
+NUMB = Q
+proof(NUMB)
+SUM_2 = NUMB * (NUMB + 1) / 2
+print(f'Выражение "n(n+1)/2" для числа {NUMB} равно {int(SUM_2)}.')
