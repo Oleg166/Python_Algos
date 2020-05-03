@@ -12,3 +12,19 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+
+COUNT = int(input("Сколько будет чисел? - "))
+QUEST = int(input("Какую цифру будем считать? - "))
+COUNT_NUMB = 0
+for i in range(1, COUNT+1):
+    NUMB = int(input(f"Число {i}: "))
+    for j in range(1, len(str(NUMB)) + 1):
+        NUMB_1 = NUMB % 10
+        try:
+            if QUEST % NUMB_1 == 0 and QUEST // NUMB_1 == 1:
+                COUNT_NUMB += 1
+        except ZeroDivisionError:
+            COUNT_NUMB += 1
+        NUMB = NUMB // 10
+
+print(f"Было введено {COUNT_NUMB} цифр '{QUEST}'")

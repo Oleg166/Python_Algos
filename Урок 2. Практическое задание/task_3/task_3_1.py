@@ -13,17 +13,11 @@
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
 
-# Черновик, задание не доделал
-A = 3486
-A1 = A % 10
-AA = A // 10
-A2 = AA % 10
-AAA = AA // 10
-A3 = AAA % 10
-AAAA = AAA // 10
-print(A1, A2, A3, AAAA)
-print(((3 * 10 + 4) * 10 + 8) * 10 + 6)
-NUMB = 3486
+NUMB = int(input("Введите число: "))
+NUMB_2 = 0
+for n in range(len(str(NUMB))-1, -1, -1):
+    NUMB_1 = NUMB % 10
+    NUMB = NUMB // 10
+    NUMB_2 = NUMB_2 + NUMB_1*(10**n)
 
-for n in range(1, len(str(NUMB))+1):
-    print("NUMB")
+print(NUMB_2)
