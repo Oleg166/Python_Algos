@@ -17,3 +17,20 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ РЕКУРСИЮ
 """
+
+
+def recur_symbol(elem=32, count=0):
+    """
+    Функция выводит на экран коды и символы таблицы ASCII, начиная с символа
+    под номером 32 и заканчивая 127-м включительно.
+    """
+    print(f"{elem} - {chr(elem)}", end=" ")
+    count += 1
+    if count % 10 == 0:
+        print("")
+    if elem == 127:
+        return
+    recur_symbol(elem+1, count)
+
+
+recur_symbol()

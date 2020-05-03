@@ -8,3 +8,11 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+COUNT = int(input("Введите количество элементов: "))
+NUMB = 1
+_SUM = 0
+for i in range(1, COUNT+1):
+    _SUM = NUMB + _SUM
+    NUMB = NUMB / (-2)
+
+print(f"Количество элементов - {COUNT}, их сумма - {_SUM}")

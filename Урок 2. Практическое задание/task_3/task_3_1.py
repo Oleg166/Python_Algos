@@ -12,3 +12,12 @@
 
 ЗДЕСЬ ДОЛЖНА БЫТЬ РЕАЛИЗАЦИЯ ЧЕРЕЗ ЦИКЛ
 """
+
+NUMB = int(input("Введите число: "))
+NUMB_2 = 0
+for n in range(len(str(NUMB))-1, -1, -1):
+    NUMB_1 = NUMB % 10
+    NUMB = NUMB // 10
+    NUMB_2 = NUMB_2 + NUMB_1*(10**n)
+
+print(NUMB_2)
