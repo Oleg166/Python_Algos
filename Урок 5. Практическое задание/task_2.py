@@ -13,27 +13,25 @@
 """
 import collections
 
-FIRMA = collections.namedtuple('FIRMA', ['name', 'profit'])
-LIST_1 = [FIRMA(name='A', profit=4), FIRMA(name='B', profit=8), FIRMA(name='C', profit=14)]
+NUMB_1 = list('A2')# list(input("Введите первое число: "))
+NUMB_2 = list('C4F') #list(input("Введите первое число: "))
 
+N_1 = (''.join(NUMB_1))
+N_1 = "0x" + N_1
+A_1 = int(N_1, 0)
 
-_sum = 0
-for i in range(0, len(LIST_1)):
-    _sum = _sum + int(LIST_1[i][1])
+N_2 = (''.join(NUMB_2))
+N_2 = "0x" + N_2
+A_2 = int(N_2, 0)
 
-_sum_2 = _sum / len(LIST_1)
-print(_sum_2)
-LOW = []
-HIGH = []
-MEAN = []
-for j in range(0, len(LIST_1)):
-    if int(LIST_1[j][1]) > _sum_2:
-        LOW.append(LIST_1[j][0])
-    elif int(LIST_1[j][1]) < _sum_2:
-        HIGH.append(LIST_1[j][0])
-    else:
-        MEAN.append(LIST_1[j][0])
+A_3 = A_1 + A_2
+A_4 = A_1 * A_2
 
-print(" ".join(LOW))
-print(" ".join(HIGH))
-print(" ".join(MEAN))
+N_3 = hex(A_3)
+N_4 = hex(A_4)
+N_3 = N_3[2:]
+N_4 = N_4[2:]
+N_3 = N_3.upper()
+N_4 = N_4.upper()
+
+print(f"Сумма чисел из примера: {list(N_3)},\nпроизведение - {list(N_4)}")
