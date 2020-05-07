@@ -25,41 +25,46 @@
 
 Предприятия, с прибылью ниже среднего значения: Копыта
 """
+
 import collections
 
-FIRMA = collections.namedtuple('FIRMA', ['name', 'profit'])
+
+# создаем шаблон данных для фирмы
+FirmaGen = collections.namedtuple('firma', 'name profit')
 COUNT = int(input("Введите количество предприятий для расчета прибыли: "))
-PROFIT_MEAN = 0
+
+# создаем список. в котором каждый элемент  - именнованный кортеж с данными конкрентной фирмы
 LIST_1 = []
 for i in range(1, COUNT+1):
     NAME_F = input("Введите название предприятия: ")
-    PROFIT_I = input("через пробел введите прибыль данного предприятия за каждый квартал(Всего 4 квартала): ").split(
-        " ")
-    PROFIT_Y = 0
-    for j in PROFIT_I:
-        PROFIT_Y = PROFIT_Y + int(j)
-    LIST_1.append(FIRMA(name=NAME_F, profit=PROFIT_Y))
+    PROFIT_I = input("Через пробел введите прибыль данного предприятия "
+                     "за каждый квартал(Всего 4 квартала): ").split(" ")
+    LIST_1.append(FirmaGen(name=NAME_F, profit=PROFIT_I))
 
-# print(LIST_1)
+# считаем среднюю годовую прибыль для всех предприятий
+_SUM = 0
+for j in LIST_1:
+    for i in j.profit:
+        _SUM = _SUM + int(i)
 
-_sum = 0
-for i in range(0, len(LIST_1)):
-    _sum = _sum + int(LIST_1[i][1])
+_SUM_MEAN = _SUM / COUNT
+print(f"Средняя годовая прибыль всех предприятий: {_SUM_MEAN}")
 
-_sum_2 = _sum / len(LIST_1)
-print(f"Средняя годовая прибыль всех предприятий: {_sum_2}")
-LOW = []
-HIGH = []
-MEAN = []
-for j in range(0, len(LIST_1)):
-    if int(LIST_1[j][1]) > _sum_2:
-        HIGH.append(LIST_1[j][0])
-    elif int(LIST_1[j][1]) < _sum_2:
-        LOW.append(LIST_1[j][0])
+# выводим названия фирм, у которых средняя годовая прибыль выше общей средней, а у каких ниже
+LIST_LOW = []
+LIST_HIGH = []
+LIST_MEAN = []
+for j in LIST_1:
+    _SUM_J = 0
+    for i in j.profit:
+        _SUM_J = _SUM_J + int(i)
+    if _SUM_MEAN > _SUM_J:
+        LIST_LOW.append(j.name)
+    elif _SUM_MEAN < _SUM_J:
+        LIST_HIGH.append(j.name)
     else:
-        MEAN.append(LIST_1[j][0])
+        LIST_MEAN.append(j.name)
 
-print(f"Предприятия, с прибылью выше среднего значения: {' '.join(HIGH)}")
-print(f"Предприятия, с прибылью ниже среднего значения: {' '.join(LOW)}")
-
-print(" ".join(MEAN))
+print(f"Предприятия, с прибылью выше среднего значения: {' '.join(LIST_HIGH)}")
+print(f"Предприятия, с прибылью ниже среднего значения: {' '.join(LIST_LOW)}")
+print(f"Предприятия, с прибылью равной среднему значению: {' '.join(LIST_LOW)}")

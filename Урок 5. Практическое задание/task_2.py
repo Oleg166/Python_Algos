@@ -13,25 +13,119 @@
 """
 import collections
 
-NUMB_1 = list('A2')# list(input("Введите первое число: "))
-NUMB_2 = list('C4F') #list(input("Введите первое число: "))
+NUMB_1 = list(input("Введите первое число: "))
+NUMB_2 = NUMB_2 = list(input("Введите первое число: "))
 
-N_1 = (''.join(NUMB_1))
-N_1 = "0x" + N_1
-A_1 = int(N_1, 0)
+# функция для перевода шестнадцатеричного числа в виде списка в десятичное число
+def to_16(numb_list):
+    """
+    Функция превращает шестнадцатеричное число в виде списка в десятичное число
+    :param numb_list: шестнадцатеричное число в виде списка
+    :return: десятичное число
+    """
 
-N_2 = (''.join(NUMB_2))
-N_2 = "0x" + N_2
-A_2 = int(N_2, 0)
+    # создаем шаблон defaultdict
+    def_dict = collections.defaultdict(list)
 
-A_3 = A_1 + A_2
-A_4 = A_1 * A_2
+    # переделываем список, чтобы вместо букв стояли соответствующие им числа
+    numb_list_1 = []
+    for i in numb_list:
+        if i == 'A':
+            i = 10
+        elif i == 'B':
+            i = 11
+        elif i == 'C':
+            i = 12
+        elif i == 'D':
+            i = 13
+        elif i == 'E':
+            i = 14
+        elif i == 'F':
+            i = 15
+        else:
+            i = int(i)
+        numb_list_1.append(i)
 
-N_3 = hex(A_3)
-N_4 = hex(A_4)
-N_3 = N_3[2:]
-N_4 = N_4[2:]
-N_3 = N_3.upper()
-N_4 = N_4.upper()
+    # переворачиваем список для соответствия разрядов
+    numb_list_1.reverse()
 
-print(f"Сумма чисел из примера: {list(N_3)},\nпроизведение - {list(N_4)}")
+
+    """Далее можно из списка сделать десятичное число вот таким образом
+    numb = 0
+    for t in range(0, len(numb_list_1)):
+        numb = numb + (numb_list_1[t])*(16**t)"""
+
+    #А можно используя default dict.
+    # Создаем из списка default dict, где ключ - это разряд числа, а значение - цифра в разряде
+    for j in range(0, len(numb_list_1)):
+        def_dict[j].append(numb_list_1[j])
+
+    # превращаем default dict в десятичное число.
+    numb = 0
+    for n in def_dict:
+        for m in def_dict[n]:
+            numb = numb + m * (16 ** n)
+    return numb
+
+
+def from_16(number):
+    """
+    Функция превращает десятичное число в шестнадцатеричное число в виде списка
+    :param number: десятичное число
+    :return: шестнадцатеричное число в виде списка
+    """
+    # Превращаем число в список
+    end = []
+    while 1 != 0:
+        residue = number % 16
+        end.append(residue)
+        number = number // 16
+        if number < 16:
+            end.append(number)
+            break
+
+    # Переворачиваем список
+    end.reverse()
+
+    # Формируем шестнадцатеричное число в виде списка, где вместо цифр стоят соответсвующие им буквы
+    result = []
+    for elem in end:
+        if elem == 10:
+            elem = 'A'
+        elif elem == 11:
+            elem = 'B'
+        elif elem == 12:
+            elem = 'C'
+        elif elem == 13:
+            elem = 'D'
+        elif elem == 14:
+            elem = 'E'
+        elif elem == 15:
+            elem = 'F'
+        else:
+            elem = str(elem)
+        result.append(elem)
+
+    return result
+
+
+def add_16(num_1, num_2):
+    """
+    Функция принимает на вход два шестнадцатеричных числа в виде списка и
+    возвращает их сумму в виде шестнадцатеричного числа в виде списка
+    """
+    num_3 = to_16(num_1) + to_16(num_2)
+    return from_16(num_3)
+
+
+def multi_16(num_1, num_2):
+    """
+    Функция принимает на вход два шестнадцатеричных числа в виде списка и
+    возвращает их произведение в виде шестнадцатеричного числа в виде списка
+    """
+    num_3 = to_16(num_1) * to_16(num_2)
+    return from_16(num_3)
+
+
+print(f"Сумма чисел: {add_16(NUMB_1, NUMB_2)}")
+print(f"Произведение чисел: {multi_16(NUMB_1, NUMB_2)}")
