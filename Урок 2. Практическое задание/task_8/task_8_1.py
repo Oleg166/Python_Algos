@@ -21,7 +21,7 @@ for i in range(1, COUNT+1):
     for j in range(1, len(str(NUMB)) + 1):
         NUMB_1 = NUMB % 10
         try:
-            if QUEST % NUMB_1 == 0 and QUEST // NUMB_1 == 1:
+            if NUMB_1 % QUEST == 0 and NUMB_1 // QUEST == 1:
                 COUNT_NUMB += 1
         except ZeroDivisionError:
             COUNT_NUMB += 1
