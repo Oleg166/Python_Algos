@@ -10,7 +10,7 @@
 """
 import timeit
 import random
-COUNT = int(input("Введите количество элементов: "))
+# COUNT = int(input("Введите количество элементов: "))
 
 def merge_sort(orig_list):
     if len(orig_list) > 1:
@@ -46,6 +46,50 @@ def merge_sort(orig_list):
         return orig_list
 
 
-orig_list = [random.uniform(0, 50) for _ in range(COUNT)]
-print(f"Исходный -        {orig_list}")
-print(f"Отсортированный - {merge_sort(orig_list)}")
+# orig_list = [random.uniform(0, 50) for _ in range(COUNT)]
+# print(f"Исходный -        {orig_list}")
+# print(f"Отсортированный - {merge_sort(orig_list)}")
+
+# замеры 5
+print("Замеры на списках из 5 элементов:")
+orig_list = [random.uniform(0, 50) for _ in range(5)]
+print(f"Исходный список из 5 элементов:\n{orig_list}")
+print(timeit.timeit("merge_sort(orig_list)", \
+    setup="from __main__ import merge_sort, orig_list", number=1000))
+print(f"Отсортированный список из 5 элементов:\n{merge_sort(orig_list)}\n")
+print('*'*50)
+
+# замеры 10
+print("Замеры на списках из 10 элементов:")
+orig_list = [random.uniform(0, 50) for _ in range(10)]
+print(f"Исходный список из 10 элементов:\n{orig_list}")
+print(timeit.timeit("merge_sort(orig_list)", \
+    setup="from __main__ import merge_sort, orig_list", number=1000))
+print(f"Отсортированный список из 10 элементов:\n{merge_sort(orig_list)}\n")
+print('*'*50)
+
+# замеры 100
+print("Замеры на списках из 100 элементов:")
+orig_list = [random.uniform(0, 50) for _ in range(100)]
+print(f"Исходный список из 100 элементов:\n{orig_list}")
+print(timeit.timeit("merge_sort(orig_list)", \
+    setup="from __main__ import merge_sort, orig_list", number=1000))
+print(f"Отсортированный список из 100 элементов:\n{merge_sort(orig_list)}\n")
+print('*'*50)
+
+# замеры 1000
+print("Замеры на списках из 1000 элементов:")
+orig_list = [random.uniform(0, 50) for _ in range(1000)]
+print(f"Исходный список из 1000 элементов:\n{orig_list}")
+print(timeit.timeit("merge_sort(orig_list)", \
+    setup="from __main__ import merge_sort, orig_list", number=1000))
+print(f"Отсортированный список из 1000 элементов:\n{merge_sort(orig_list)}\n")
+print('*'*50)
+
+"""
+Результаты замеров:
+- список из 5    элементов: 0.009163
+- список из 10   элементов: 0.01623
+- список из 100  элементов: 0.2655
+- список из 1000 элементов: 3.1706
+"""
